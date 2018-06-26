@@ -6,18 +6,19 @@ public class InteractionTrigger : MonoBehaviour
 {
 
     public GameObject light;
-    private bool on = false;
+    public bool on = false;
 
 
     // Use this for initialization
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider Player)
     {
-        if (Input.GetKeyDown("joystick button 3") && !on)
+        //joystick button 3 or KeyCode.E
+        if (Input.GetKeyDown(KeyCode.M) && !on)
         {
             light.SetActive(true);
             on = true;
         }
-        else if (Input.GetKeyDown("joystick button 3") && on)
+        else if (Input.GetKeyDown(KeyCode.M) && on)
         {
             light.SetActive(false);
             on = false;

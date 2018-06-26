@@ -16,8 +16,13 @@ public class howl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         if (Input.GetKeyDown("joystick button 3"))
+        {
+            anim.Play("Hawl");
+            particle.Play();
+        }
+        else if (Input.GetKeyDown(KeyCode.M))
         {
             anim.Play("Hawl");
             particle.Play();

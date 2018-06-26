@@ -6,25 +6,15 @@ using UnityEngine.SceneManagement;
 public class PortalWater : MonoBehaviour
 {
 
-    public GameObject Character;
-    public GameObject Collider;
-    
-
-
-    void Update()
+    void OnCollisionEnter(Collision col)
     {
-        RaycastHit hit;
-        float theDistance;
-
-        Vector3 forward = transform.TransformDirection(Vector3.forward) * 20;
-
-        if (Physics.Raycast(transform.position, (forward), out hit))
+        if (col.gameObject.tag == "Player")
         {
-            theDistance = hit.distance;
-            print(theDistance + " " + hit.collider.gameObject.name);
+            SceneManager.LoadScene(2);
         }
-
     }
+
 }
+
 
 

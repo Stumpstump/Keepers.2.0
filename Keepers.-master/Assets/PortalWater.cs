@@ -5,17 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class PortalWater : MonoBehaviour
 {
+    public GameObject character;
+    public Animator anim;
+    bool CheckForHowl = false;
 
-    public GameObject Item;
+    private IEnumerator PortalHowl ()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(2);
+    }
 
+    private void OnTriggerEnter(Collider Player)
+    {
+        CheckForHowl = true;
+    }
+    private void OnTriggerExit(Collider Player)
+    {
+        CheckForHowl = false;
+    }
 
-    private void OnTriggerStay(Collider Player)
+    private void Update()
     {
        
-        if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown("joystick button 3"))
+        if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown("joystick button 3") && CheckForHowl)
         {
-            SceneManager.LoadScene(2);
-  
+            anim.Play("FadeOut");
+            StartCoroutine(PortalHowl());
         }
  
     }
